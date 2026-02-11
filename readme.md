@@ -41,7 +41,7 @@ This work demonstrates the complete machine learning pipeline including:
 ## d. Target Classes
 
 - <=50K
-- >50K
+- &gt50K
 
 ## e. Data Preprocessing steps
 
