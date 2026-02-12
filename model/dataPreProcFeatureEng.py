@@ -5,7 +5,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-def dataPreProcFeatureEng():
+def dataPreProcFeatureEng_MainData():
 
     # Add column names as not present in the UCI repo data
     columns = [
@@ -37,8 +37,8 @@ def dataPreProcFeatureEng():
     y = df["income"]
 
     # Encode Target Variable
-    encode_target = LabelEncoder()
-    y = encode_target.fit_transform(y)
+    encode_target_train = LabelEncoder()
+    y = encode_target_train.fit_transform(y)
 
     # One-Hot Encode Categorical Features
     X = pd.get_dummies(X, drop_first=True)
@@ -62,3 +62,30 @@ def dataPreProcFeatureEng():
     print("Test shape:", X_test_scaled.shape)
 
     return X_train, X_test, X_train_scaled, X_test_scaled, y_train, y_test
+
+def dataPreProcFeatureEng_TestData (df,true):
+    df.replace((["?", " ?"]), np.nan, inplace=True)
+    df.dropna(inplace=True)
+
+    # Separate target
+    y = df["income"]
+    X = df.drop("income", axis=1)
+
+    # Encode target
+    encode_target_test = LabelEncoder()
+    y = encode_target_test.fit_transform(y)
+
+    # One-hot encoding
+    X = pd.get_dummies(X, drop_first=True)
+
+    # Align with training columns
+    training_cols = joblib.load("model/feature_columns.pkl")
+    X = X.reindex(columns=training_cols, fill_value=0)
+
+    # Scaling if required
+    if scale_required:
+        sclare=scaler = StandardScaler()
+        //scaler = joblib.load("model/scaler.pkl")
+        X_scaled = scaler.transform(X)
+
+    return X_scaled, y
