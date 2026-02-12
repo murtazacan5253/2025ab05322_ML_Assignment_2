@@ -1,23 +1,17 @@
 # Import Dependencies
 from dataPreProcFeatureEng import dataPreProcFeatureEng
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import *
 import joblib
 
 # Decision Tree
-X_train, X_test, _, _, y_train, y_test = dataPreProcFeatureEng()
+def decisionTree():
+    X_train, X_test, _, _, y_train, y_test = dataPreProcFeatureEng()
 
-model = DecisionTreeClassifier()
-model.fit(X_train,y_train)
+    model = DecisionTreeClassifier()
+    model.fit(X_train,y_train)
 
-pred = model.predict(X_test)
-prob = model.predict_proba(X_test)[:,1]
+    pred = model.predict(X_test)
+    prob = model.predict_proba(X_test)[:,1]
 
-print("Accuracy:", accuracy_score(y_test,pred))
-print("AUC:", roc_auc_score(y_test,prob))
-print("Precision:", precision_score(y_test,pred))
-print("Recall:", recall_score(y_test,pred))
-print("F1:", f1_score(y_test,pred))
-print("MCC:", matthews_corrcoef(y_test,pred))
-
-joblib.dump(model,"model/tree.pkl")
+    joblib.dump(model,"model/tree.pkl")
+    return (y_test, pred)
