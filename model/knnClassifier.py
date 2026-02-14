@@ -9,5 +9,5 @@ def trainKnnClassifier (Xs_train, y_train):
     model = KNeighborsClassifier(n_neighbors=5)
     model.fit(Xs_train,y_train)
 
-    joblib.dump(model,"model/knnClassifier.pkl")
+    joblib.dump(model,"model/pkl/knnClassifier.pkl")
     return model

@@ -9,5 +9,5 @@ def trainXGBoost(X_train, y_train):
     model = XGBClassifier(eval_metric="logloss")
     model.fit(X_train,y_train)
 
-    joblib.dump(model,"model/xgBoost.pkl")
+    joblib.dump(model,"model/pkl/xgBoost.pkl")
     return model

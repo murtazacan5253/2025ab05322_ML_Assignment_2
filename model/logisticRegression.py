@@ -9,5 +9,5 @@ def trainLogisticRegression (Xs_train,y_train):
     model = LogisticRegression(max_iter=200)
     model.fit(Xs_train, y_train)
 
-    joblib.dump(model,"model/logisticRegression.pkl")
+    joblib.dump(model,"model/pkl/logisticRegression.pkl")
     return model

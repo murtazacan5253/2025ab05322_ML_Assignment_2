@@ -39,7 +39,7 @@ def dataProcScaling_TrainData():
 
     # One-Hot Encode Categorical Features
     X = pd.get_dummies(X, drop_first=True)
-    joblib.dump(X.columns, "model/trainFeatureColumns.pkl")
+    joblib.dump(X.columns, "model/pkl/trainFeatureColumns.pkl")
 
     # Train/Test Split
     X_train, X_test, y_train, y_test = train_test_split(
@@ -53,7 +53,7 @@ def dataProcScaling_TrainData():
     scaler = StandardScaler()
 
     X_train_scaled = scaler.fit_transform(X_train)
-    joblib.dump(scaler,"model/scaler.pkl")
+    joblib.dump(scaler,"model/pkl/scaler.pkl")
     X_test_scaled = scaler.transform(X_test)
 
 
@@ -63,33 +63,9 @@ def dataProcScaling_TrainData():
 
     return(X_train, X_test, X_train_scaled, X_test_scaled, y_train, y_test)
 
-def dataProcScaling_TestData():
+def dataProcScaling_TestData(df):
     
-    columns =[
-    "age",
-    "workclass",
-    "fnlwgt",
-    "education",
-    "education-num",
-    "marital-status",
-    "occupation",
-    "relationship",
-    "race",
-    "sex",
-    "capital-gain",
-    "capital-loss",
-    "hours-per-week",
-    "native-country",
-    "class"
-    ]
-
-    df_test = pd.read_csv(
-    "adult.test",
-    header=None,
-    names=columns,
-    sep=",",
-    skipinitialspace=True
-    )
+    df_test=df.copy()
 
     # Information about dataset
     df_test.info()
@@ -119,11 +95,11 @@ def dataProcScaling_TestData():
 
     # One-Hot Encode Categorical Features
     X_testData = pd.get_dummies(X_testData, drop_first=True)
-    training_cols = joblib.load("model/trainFeatureColumns.pkl")
+    training_cols = joblib.load("model/pkl/trainFeatureColumns.pkl")
     X_testData = X_testData.reindex(columns=training_cols, fill_value=0)
 
     # Feature Scaling
-    scaler = joblib.load("model/scaler.pkl")
+    scaler = joblib.load("model/pkl/scaler.pkl")
 
     X_test_scaledData = scaler.transform(X_testData)
 

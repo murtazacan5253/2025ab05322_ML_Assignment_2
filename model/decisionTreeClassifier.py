@@ -9,5 +9,5 @@ def trainDecisionTree(X_train, y_train):
     model = DecisionTreeClassifier()
     model.fit(X_train,y_train)
 
-    joblib.dump(model,"model/decisionTree.pkl")
+    joblib.dump(model,"model/pkl/decisionTree.pkl")
     return model

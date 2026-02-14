@@ -9,5 +9,5 @@ def trainNaiveBayesClassifier (Xs_train,y_train):
     model = GaussianNB()
     model.fit(Xs_train,y_train)
 
-    joblib.dump(model,"model/naiveBayes.pkl")
+    joblib.dump(model,"model/pkl/naiveBayes.pkl")
     return model

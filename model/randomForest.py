@@ -10,5 +10,5 @@ def trainRandomForest(X_train, y_train):
     model.fit(X_train,y_train)
 
 
-    joblib.dump(model,"model/randomForest.pkl")
+    joblib.dump(model,"model/pkl/randomForest.pkl")
     return model
