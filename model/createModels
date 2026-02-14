@@ -1,5 +1,5 @@
 # Import Dependencies
-from dataPreProcFeatureEng import dataPreProcFeatureEng
+from dataPreProcFeatureEng import dataPreProcFeatureEng_TrainData
 from decisionTreeClassifier import trainDecisionTree
 from knnClassifier import trainKnnClassifier
 from logisticRegression import trainLogisticRegression
@@ -7,7 +7,7 @@ from naiveBayesClassifier import trainNaiveBayesClassifier
 from randomForest import trainRandomForest
 from xgBoost import trainXGBoost
 
-X_train, X_test, Xs_train, Xs_test, y_train, y_test = dataPreProcFeatureEng()
+X_train, X_test, Xs_train, Xs_test, y_train, y_test = dataPreProcFeatureEng_TrainData()
 
 trainDecisionTree(X_train, y_train)
 trainKnnClassifier(Xs_train, y_train)
