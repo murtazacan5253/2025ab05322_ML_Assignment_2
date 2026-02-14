@@ -1,5 +1,4 @@
 # Import Dependencies
-from fairlearn.datasets import fetch_adult
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
@@ -8,8 +7,21 @@ from sklearn.preprocessing import StandardScaler
 import joblib
 
 def dataProcScaling_TrainData():
-    adult_data = fetch_adult(as_frame=True)
-    df=adult_data.frame
+    
+    columns = [
+    "age","workclass","fnlwgt","education","education-num",
+    "marital-status","occupation","relationship","race","sex",
+    "capital-gain","capital-loss","hours-per-week",
+    "native-country","class"
+    ]
+    
+    df = pd.read_csv(
+    "data/adult.data",
+    header=None,
+    names=columns,
+    sep=",",
+    skipinitialspace=True
+    )
 
     # Information about dataset
     df.info()

@@ -11,7 +11,7 @@ import os
 
 # Title for App
 st.set_page_config(page_title="ML Model Evaluator", layout="wide")
-st.title("2025ab05322 Classification Models Performance Evaluator")
+st.title("Classification Models Performance Evaluator")
 st.write("Upload your dataset to compare 6 different Classification ML models.")
 
 # Upload Test Data
@@ -55,7 +55,7 @@ if uploaded_file is not None:
     st.write("Test data :", df_test.shape)
 
     # Data processing on test data
-    X_testData, X_test_scaledData, y_testData=dataProcScaling_TestData(df_test)
+    X_testData, X_testData_scaled, y_testData=dataProcScaling_TestData(df_test)
 
 
     # Model selection
@@ -69,7 +69,7 @@ if uploaded_file is not None:
         "XGBoost": "xgBoost"
     }
 
-    scaledModels =["Decision Tree", "Random Forest", "XGBoost"]
+    scaledModels =["Logistic Regression", "KNN", "Naive Bayes"]
 
 
     # Allow multiple model selection
@@ -101,7 +101,7 @@ if uploaded_file is not None:
                 confusion_matrices[model_name] = cm
             else:
             #metrics_list.append(getMetrics(model,X_test_scaledData,y_testData)) 
-                metrics,y_pred,y_prob=getMetrics(model,X_test_scaledData,y_testData)
+                metrics,y_pred,y_prob=getMetrics(model,X_testData_scaled,y_testData)
                 metrics['Model'] = model_name
                 metrics_list.append(metrics)
                 cm = confusion_matrix(y_testData, y_pred)
