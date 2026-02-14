@@ -54,7 +54,6 @@ if uploaded_file is not None:
     # Dataset preview
     st.subheader("Test Dataset Preview")
     st.write(f"Dataset Shape: {df_test.shape[0]} rows, {df_test.shape[1]} columns")
-    st.dataframe(df_test.head())
 
     # Data processing on test data
     X_testData, X_testData_scaled, y_testData=dataProcScaling_TestData(df_test)
@@ -117,10 +116,10 @@ if uploaded_file is not None:
         st.subheader("Confusion Matrix")
         for model_name in selected_models:
             st.write(pd.DataFrame(cm, columns=["Pred 0", "Pred 1"], index=["True 0", "True 1"]))
-            fig, ax = plt.subplots()
+            fig, ax = plt.subplots(figsize=(6,5))
             sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', ax=ax,
             xticklabels=["Pred 0", "Pred 1"], yticklabels=["True 0", "True 1"])
             ax.set_title(f"Confusion Matrix - {model_name}")
-            st.pyplot(fig)
+            st.pyplot(fig,dpi=500)
     else:
         st.sidebar.warning("Please select at least one model.")
