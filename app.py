@@ -107,8 +107,8 @@ if uploaded_file is not None:
                 cm = confusion_matrix(y_testData, y_pred)
                 confusion_matrices[model_name] = cm
 
-        st.success("Model(s) executed successfully on test dataset.")    
         st.subheader("Evaluation Metrics Comparison")
+        st.success("Model(s) executed successfully on test dataset.")  
         metrics_df = pd.DataFrame(metrics_list).set_index('Model')
         st.dataframe(metrics_df.style.highlight_max(axis=0))
 
