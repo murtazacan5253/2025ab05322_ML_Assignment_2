@@ -126,17 +126,52 @@ if uploaded_file is not None:
         st.subheader("Evaluation Metrics Comparison")
         st.success("Model(s) executed successfully on test dataset.")  
         metrics_df = pd.DataFrame(metrics_list).set_index('Model')
-        st.dataframe(metrics_df.style.highlight_max(axis=0))
+        max_style = 'background-color: #0e4d25; color: #ffffff; font-weight: bold; border: 1px solid #2ecc71;' # Apply the style to the dataframe
+        st.dataframe( metrics_df.style.highlight_max( axis=0, props=max_style ).format(precision=3), use_container_width=True )
+        #st.dataframe(metrics_df.style.highlight_max(axis=0))
 
 
         # Show Confusion Matrix
         st.subheader("Confusion Matrix")
         for model_name in selected_models:
-            st.write(pd.DataFrame(cm, columns=["Pred 0", "Pred 1"], index=["True 0", "True 1"]))
-            fig, ax = plt.subplots(figsize=(6,5))
-            sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', ax=ax,
-            xticklabels=["Pred 0", "Pred 1"], yticklabels=["True 0", "True 1"])
-            ax.set_title(f"Confusion Matrix - {model_name}")
-            st.pyplot(fig,dpi=500)
+            #st.write(pd.DataFrame(cm, columns=["Pred 0", "Pred 1"], index=["True 0", "True 1"]))
+            st.markdown(f"### 🔹 {model_name}")
+            col1, col2 = st.columns([1, 2])
+            with col1:
+                st.markdown("**Matrix Values**")
+                cm_df = pd.DataFrame(
+                    cm,
+                    columns=["Predicted ≤50K", "Predicted >50K"],
+                    index=["Actual ≤50K", "Actual >50K"]
+                )
+                st.dataframe(cm_df, use_container_width=True)
+
+            # ---- Right: Heatmap ----
+            with col2:
+                fig, ax = plt.subplots(figsize=(6, 5))
+
+                sns.heatmap(
+                    cm,
+                    annot=True,
+                    fmt='d',
+                    cmap="YlGnBu",
+                    linewidths=1,
+                    linecolor='white',
+                    cbar=True,
+                    xticklabels=["Pred ≤50K", "Pred >50K"],
+                    yticklabels=["True ≤50K", "True >50K"],
+                    ax=ax
+                )
+
+                ax.set_xlabel("Predicted Label", fontsize=12)
+                ax.set_ylabel("Actual Label", fontsize=12)
+                ax.set_title(f"Confusion Matrix - {model_name}", fontsize=14, fontweight='bold')
+
+                st.pyplot(fig)
+            #fig, ax = plt.subplots(figsize=(6,5))
+            #sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', ax=ax,
+            #xticklabels=["Pred 0", "Pred 1"], yticklabels=["True 0", "True 1"])
+            #ax.set_title(f"Confusion Matrix - {model_name}")
+            #st.pyplot(fig,dpi=500)
     else:
         st.sidebar.warning("Please select at least one model.")
