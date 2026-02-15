@@ -11,11 +11,11 @@
 ## 1. Mandatory Submission Links
 
 
-**GitHub Repository Link:** https://github.com/rkapan/2025AB05272_MLassignment2.git
+**GitHub Repository Link:** https://github.com/murtazacan5253/2025ab05322_ML_Assignment_2.git
 
 
  
-**Live Streamlit App Link:** https://2025ab05272bitsmlassignment.streamlit.app 
+**Live Streamlit App Link:** https://2025ab05322-ml-assignment2.streamlit.app/ 
 
 
 
