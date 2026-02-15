@@ -33,7 +33,24 @@ columns =[
 "class"
 ]
 
-uploaded_file = st.file_uploader("Upload Test Dataset")
+# Download dataset
+_, _, download_col = st.columns([1, 1, 1.5])
+    
+with download_col:
+    st.sidebar.markdown('<p class="right-aligned-text">📁 Data Source</p>', unsafe_allow_html=True)
+    
+    test_file_path = "data/adult.test"
+    if os.path.exists(test_file_path):
+        with open(test_file_path, "rb") as file:
+            st.sidebar.download_button(
+                label="📥 Download Test Dataset in CSV", # Shortened label for better sizing
+                data=file,
+                file_name="test_data.csv",
+                mime="text/csv"
+            )
+
+# Upload dataset
+uploaded_file = st.file_uploader("Upload Test Dataset", type="csv")
 if uploaded_file is not None:
     
     uploaded_file.seek(0)
