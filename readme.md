@@ -8,8 +8,8 @@ The project involves building six classification models on the same dataset, eva
 
 This work demonstrates the complete machine learning pipeline including:
 
-- Data preprocessing
 - Exploratory Data Analysis
+- Data preprocessing
 - Model training
 - Performance evaluation
 - Deployment using Streamlit
@@ -19,7 +19,7 @@ This work demonstrates the complete machine learning pipeline including:
 - Train Dataset Instances: ~32,000
 - Train Dataset Instances: ~16,000
 - Features: 14
-- Target Variable: income
+- Target Variable: class
 - Classification Type: Binary
 
 ## c. Features included
@@ -48,7 +48,8 @@ This work demonstrates the complete machine learning pipeline including:
 
 - Replaced missing value indicators (?) with NaN
 - Removed incomplete rows
-- Encoded categorical features
+- Label Encoder for target feature
+- (One-Hot) Encoder for categorical features
 - Scaled numerical features where require
 
 ## f. Models Used
@@ -87,4 +88,5 @@ The following machine learning models were implemented and evaluated:
 
 
 ---
-![alt text](Screenshot_BITS_Lab.png)
+![alt text](BITS_VLab_Screenshot_1.png)
+![alt text](BITS_VLab_Screenshot_2.png)

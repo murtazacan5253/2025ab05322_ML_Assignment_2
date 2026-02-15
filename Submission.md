@@ -1,10 +1,10 @@
-# ML Assignment 2 Submission: M.Tech (AIML/DSE)
+# ML Assignment 2 Submission: M.Tech (AIML)
 
 **Student Name:** Murtaza Mansoor Canteenwala 
 
 **BITS ID:** 2025ab05322
 
-**Submission Date:** 02-08-2026
+**Submission Date:** 02-15-2026
 
 ---
 
@@ -23,7 +23,8 @@
 
 ## 2. BITS Virtual Lab Execution Screenshot
 
-![alt text](.png)
+![alt text](BITS_VLab_Screenshot_1.png)
+![alt text](BITS_VLab_Screenshot_2.png)
 
 
 ## 3. Streamlit App Execution Screenshot
@@ -33,7 +34,7 @@
 
 ---
 
-## 4. GitHub README Documentation
+## 4. README Documentation
 
 The following content is also included in the repository README.md.
 
@@ -46,17 +47,18 @@ The project involves building six classification models on the same dataset, eva
 
 This work demonstrates the complete machine learning pipeline including:
 
-- Data preprocessing
 - Exploratory Data Analysis
+- Data preprocessing
 - Model training
 - Performance evaluation
 - Deployment using Streamlit
 
 ## b. Dataset Characteristics
 
-- Instances: ~48,000
+- Train Dataset Instances: ~32,000
+- Train Dataset Instances: ~16,000
 - Features: 14
-- Target Variable: income
+- Target Variable: class
 - Classification Type: Binary
 
 ## c. Features included
@@ -65,27 +67,28 @@ This work demonstrates the complete machine learning pipeline including:
 - workclass
 - fnlwgt
 - education
-- education_num
-- marital_status
+- education-num
+- marital-status
 - occupation
 - relationship
 - race
 - sex
-- capital_gain
-- capital_loss
-- hours_per_week
-- native_country
+- capital-gain
+- capital-loss
+- hours-per-week
+- native-country
 
 ## d. Target Classes
 
-- <=50K
-- &gt50K
+- '<=50K'
+- '>50K'
 
 ## e. Data Preprocessing steps
 
 - Replaced missing value indicators (?) with NaN
 - Removed incomplete rows
-- Encoded categorical features
+- Label Encoder for target feature
+- (One-Hot) Encoder for categorical features
 - Scaled numerical features where require
 
 ## f. Models Used
@@ -127,16 +130,16 @@ The following machine learning models were implemented and evaluated:
 
 ## 5. Final Submission Checklist
 
-* [x] GitHub repository contains `app.py`, `requirements.txt`, and saved models.
+* [x] GitHub repo link works and repository contains `app.py`, `requirements.txt`, and saved models.
 
 
-* [x] Live Streamlit app is deployed and interactive.
+* [x] Live Streamlit app is deployed and link opens correctly.
 
 
-* [x] App includes CSV upload for test data.
+* [x] App includes CSV downlaod and upload for test data.
 
 
-* [x] App displays Evaluation Metrics, Confusion Matrix, and Classification Report.
+* [x] App loads without errors and displays Evaluation Metrics, Confusion Matrix.
 
 
-* [x] GitHub commit history reflects original development.
+* [x] README.md updated and added in the submitted PDF.
