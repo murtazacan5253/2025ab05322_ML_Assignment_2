@@ -16,7 +16,8 @@ This work demonstrates the complete machine learning pipeline including:
 
 ## b. Dataset Characteristics
 
-- Instances: ~48,000
+- Train Dataset Instances: ~32,000
+- Train Dataset Instances: ~16,000
 - Features: 14
 - Target Variable: income
 - Classification Type: Binary
@@ -27,21 +28,21 @@ This work demonstrates the complete machine learning pipeline including:
 - workclass
 - fnlwgt
 - education
-- education_num
-- marital_status
+- education-num
+- marital-status
 - occupation
 - relationship
 - race
 - sex
-- capital_gain
-- capital_loss
-- hours_per_week
-- native_country
+- capital-gain
+- capital-loss
+- hours-per-week
+- native-country
 
 ## d. Target Classes
 
-- <=50K
-- &gt50K
+- '<=50K'
+- '>50K'
 
 ## e. Data Preprocessing steps
 
